@@ -3,6 +3,8 @@ package org.example.demo.controller;
 import org.example.demo.model.Usuario;
 import org.example.demo.service.UsuarioService;
 import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import java.util.Arrays;
 import java.util.List;
@@ -66,7 +68,7 @@ public class UsuarioControllerTest {
     void testDeleteUsuario() throws Exception {
         Long id = 1L;
         doNothing().when(usuarioService).deleteUsuario(id);
-        mockMvc.perform(delete("/api/usuarios/(id)",id)).andExpect(status().isNoContent());
+        mockMvc.perform(delete("/api/usuarios/{id}",id)).andExpect(status().isNoContent());
         verify(usuarioService, times(1)).deleteUsuario(id);
     }
 }
