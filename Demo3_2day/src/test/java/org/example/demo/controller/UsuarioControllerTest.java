@@ -61,4 +61,12 @@ public class UsuarioControllerTest {
                 .andExpect(jsonPath("$.nombre", is("Carlos López")))
                 .andExpect(jsonPath("$.email", is("carlos@example.com")));
     }
+
+    @Test
+    void testDeleteUsuario() throws Exception {
+        Long id = 1L;
+        doNothing().when(usuarioService).deleteUsuario(id);
+        mockMvc.perform(delete("/api/usuarios/(id)",id)).andExpect(status().isNoContent());
+        verify(usuarioService, times(1)).deleteUsuario(id);
+    }
 }
