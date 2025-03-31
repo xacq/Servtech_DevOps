@@ -22,4 +22,10 @@ public class UsuarioController {
     public Usuario crearUsuario(@RequestBody Usuario usuario) {
         return usuarioService.crearUsuario(usuario);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUsuario (@PathVariable Long id){
+        usuarioService.deleteUsuario(id);
+        return ResponseEntity.noContent().build();
+    }
 }
