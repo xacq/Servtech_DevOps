@@ -21,4 +21,8 @@ public class UsuarioService {
         usuario.setId(3L);
         return usuario;
     }
+
+    public void deleteUsuario(Long id){
+
+    }
 }
